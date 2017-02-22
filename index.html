@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<script>
+    /*移动适配*/
+    var desW=640;/*设计稿的宽度*/
+    var winW=document.documentElement.clientWidth;/*设备的宽度*/
+    document.documentElement.style.fontSize=winW/desW*100+'px';/*各个设备的根元素
+    字体大小*/
+</script>
+<body>
+<section class="main">
+    <section class="music">
+        <audio src="audio/music.mp3" preload="auto" id="beyond"></audio>
+
+    </section>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide1">
+                <img src="img/flower.jpg" alt=""/>
+                <span>My Resume</span>
+                <span>我的简历</span>
+                <img src="img/line.jpg" alt=""/>
+                <span>【人生充满着期待，梦想连接着未来。】</span>
+                <span>name:郭晓靖</span>
+                <span>Tel:13233127698</span>
+                <span>【或许我是你需要的人！】</span>
+                <i></i>
+            </div>
+            <div class="swiper-slide slide2">
+                <img src="img/left.jpg" alt=""/>
+                <img src="img/right.jpg" alt=""/>
+                <img src="img/line-bottom.jpg" alt=""/>
+                <img src="img/line-bottom.jpg" alt=""/>
+                <span>Personal information</span>
+                <span>个人信息</span>
+                <div>
+                    <p>姓名:郭晓靖</p>
+                    <p>年龄:18</p>
+                    <p>性别:女</p>
+                    <p>爱好:看书</p>
+                    <p>学历:高中>_<</p>
+                </div>
+                <img src="img/myphoto.jpg" alt=""/>
+                <span>自<br/>我<br/>评<br/>价<br/></span>
+                <img src="img/conent.jpg" alt=""/>
+                <span>乐于助人, <br/>活泼开朗， <br/> 有团体意识， <br/> 女汉子一枚， <br/>逗比一个</span>
+                <i></i>
+            </div>
+            <div class="swiper-slide slide3">
+                <img src="img/flower-top.jpg" alt=""/>
+                <span>Professionnal skill</span>
+                <span>专业技能</span>
+                <img src="img/line1.jpg" alt=""/>
+                <span>HTML/CSS</span>
+                <span>原生JS</span>
+                <span>REACT</span>
+                <span>ANGULAR</span>
+                <span>NODE</span>
+                <span>JQUERY/AJAX</span>
+                <img src="img/jinneng1.jpg" alt=""/>
+                <img src="img/jinneng2.jpg" alt=""/>
+                <img src="img/jinneng3.jpg" alt=""/>
+                <img src="img/jinneng4.jpg" alt=""/>
+                <img src="img/jinneng4.jpg" alt=""/>
+                <img src="img/jinneng4.jpg" alt=""/>
+                <i></i>
+            </div>
+            <div class="swiper-slide slide4">
+                <img src="img/flower-bottom.jpg" alt=""/>
+                <span>My works</span>
+                <span>我的作品</span>
+                <img src="img/item.jpg" alt=""/>
+                <img src="img/mywork.jpg" alt=""/>
+                <img src="img/mywork2.jpg" alt=""/>
+                <img src="img/mywork3.jpg" alt=""/>
+                <img src="img/mywork4.jpg" alt=""/>
+                <i></i>
+            </div>
+            <div class="swiper-slide slide5">
+                <img src="img/top.jpg" alt=""/>
+                <span>Contact information</span>
+                <span>联系方式</span>
+                <img src="img/border.jpg" alt=""/>
+                <img src="img/ma.jpg" alt=""/>
+                <span>手机:13233127698</span>
+                <span>qq:1731552047</span>
+                <span>很期待加入你们！</span>
+                <img src="img/bottom.jpg" alt=""/>
+                <i></i>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script src="js/swiper.min.js"></script>
+<script>
+    var mySwiper=new Swiper(".swiper-container",{
+        direction:"vertical",
+        loop:true,
+        onTransitionEnd:function(swiper){
+            var curIndex=swiper.activeIndex;
+            var slides=swiper.slides;
+            [].forEach.call(slides,function(item,index){
+                item.id="";
+                if(index==curIndex){
+                    switch (index){
+                        case 0:
+                            item.id="page"+(slides.length-2);
+                            break;
+                        case slides.length-1:
+                            item.id="page1";
+                            break;
+                        default :
+                            item.id="page"+index
+                    }
+                }
+            })
+        }
+    });
+
+    var music=document.querySelector(".music");
+    var beyond=document.querySelector("#beyond");
+    window.setTimeout(function(){
+        beyond.play();
+        music.style.opacity=1;
+        music.className='music musicMove'
+    },1000);
+    music.addEventListener("click",function(){
+        if(beyond.paused){
+            beyond.play();
+            music.className='music musicMove'
+        }else{
+            beyond.pause();
+            music.className='music'
+        }
+    },false)
+</script>
